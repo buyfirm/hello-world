@@ -40,8 +40,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16.x"
-      - run: npm ci
-      - run: npm run build
 
       # Copy build directory to S3
       - name: Copy build to S3
