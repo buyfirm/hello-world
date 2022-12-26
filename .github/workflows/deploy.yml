@@ -45,7 +45,7 @@ jobs:
       - name: Copy build to S3
         run: |
           zip -r project.zip . -x node_modules\* dist\* .git\*
-          aws s3 cp project.zip s3://typescript-express-artifact-2/code-deploy-3/project.zip
+          aws s3 cp project.zip s3://buyfirm-deployment-artifact/main-service--staging/project.zip
 
   deploy:
     name: Deploy to EC2
