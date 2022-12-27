@@ -7,7 +7,9 @@ sudo chmod -R 777 /home/ec2-user/express-app
 cd /home/ec2-user/express-app
 
 #install node modules
-yarn
+sudo yarn
 
 #start our node app in the background
-node index.js
+sudo pm2 start index.js
+sudo pm2 startup
+sudo pm2 save
