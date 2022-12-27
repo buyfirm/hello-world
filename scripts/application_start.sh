@@ -10,6 +10,7 @@ cd /home/ec2-user/express-app
 sudo yarn
 
 #start our node app in the background
+sudo pm2 stop all
 sudo pm2 start index.js
 sudo pm2 startup
 sudo pm2 save
