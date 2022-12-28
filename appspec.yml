@@ -4,6 +4,9 @@ files:
   - source: /
     destination: /home/ec2-user/hello-world
 hooks:
+  ApplicationStop:
+    - location: scripts/application_stop.sh
+      timeout: 300
   BeforeInstall:
     - location: scripts/before_install.sh
       timeout: 300
