@@ -4,7 +4,7 @@ module.exports = {
       name: "main-service",
       script: "./index.js",
       env: {
-        NODE_ENV: "production",
+        NODE_ENV: "staging",
       },
     },
   ],
