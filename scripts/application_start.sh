@@ -9,7 +9,5 @@ cd /home/ec2-user/hello-world
 #install node modules
 sudo yarn
 
-node loadEnv.js
-
 #start our node app in the background
 pm2 start
