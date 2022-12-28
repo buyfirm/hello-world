@@ -10,7 +10,4 @@ cd /home/ec2-user/hello-world
 sudo yarn
 
 #start our node app in the background
-pm2 stop all
-pm2 start index.js
-pm2 startup
-pm2 save
+pm2 start
