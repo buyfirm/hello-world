@@ -7,7 +7,7 @@ sudo chmod -R 777 /home/ec2-user/hello-world
 cd /home/ec2-user/hello-world
 
 #install node modules
-yarn
+sudo yarn
 
 #start our node app in the background
 pm2 stop all

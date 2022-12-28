@@ -44,8 +44,8 @@ jobs:
       # Copy build directory to S3
       - name: Copy build to S3
         run: |
-          zip -r project.zip . -x node_modules\* dist\* .git\*
-          aws s3 cp project.zip s3://buyfirm-deployment-artifact/main-service--staging/project.zip
+          zip -r hello-world.zip . -x node_modules\* dist\* .git\*
+          aws s3 cp hello-world.zip s3://deployment--buyfirm-main-service/dev/hello-world.zip
 
   deploy:
     name: Deploy to EC2
@@ -65,4 +65,4 @@ jobs:
           role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
           aws-region: ${{ env.AWS_REGION }}
       - run: |
-          aws deploy create-deployment --application-name buyfirm-main-service --deployment-group-name staging-asg --s3-location bucket=buyfirm-deployment-artifact,key=main-service--staging/project.zip,bundleType=zip
+          aws deploy create-deployment --application-name buyfirm-main-service --deployment-group-name dev --s3-location bucket=deployment--buyfirm-main-service,key=dev/hello-world.zip,bundleType=zip
