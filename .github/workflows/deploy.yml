@@ -65,4 +65,4 @@ jobs:
           role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
           aws-region: ${{ env.AWS_REGION }}
       - run: |
-          aws deploy create-deployment --application-name buyfirm-dev --deployment-group-name main-service --s3-location bucket=deployment--buyfirm-dev,key=hello-world.zip,bundleType=zip --ignore-application-stop-failures
+          aws deploy create-deployment --application-name buyfirm-dev --deployment-group-name temporal-service --s3-location bucket=deployment--buyfirm-dev,key=hello-world.zip,bundleType=zip --ignore-application-stop-failures
