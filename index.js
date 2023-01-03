@@ -28,24 +28,24 @@ const startListening = async () => {
 };
 
 const bootApp = async () => {
+  try {
+    const response = await fetch(
+      `http://${mainServicePrivateIp}:3001/check-cloudwatch`
+    );
+    const data = await response.json();
+    logger.log(
+      "info",
+      `Hello world pinging the main service using a private DNS`,
+      {
+        tags: "http",
+      }
+    );
+  } catch (err) {
+    logger.error(err);
+  }
+
   await createApp();
   await startListening();
 };
 
 bootApp();
-
-try {
-  const response = await fetch(
-    `http://${mainServicePrivateIp}:3001/check-cloudwatch`
-  );
-  const data = await response.json();
-  logger.log(
-    "info",
-    `Hello world pinging the main service using a private DNS`,
-    {
-      tags: "http",
-    }
-  );
-} catch (err) {
-  logger.error(err);
-}
