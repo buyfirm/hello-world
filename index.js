@@ -33,7 +33,7 @@ const bootApp = async () => {
     const response = await fetch(
       `http://${mainServicePrivateIp}:3001/check-cloudwatch`
     );
-    const data = await response.json();
+    await response.text();
     logger.log(
       "info",
       `Hello world pinging the main service using a private DNS`,
