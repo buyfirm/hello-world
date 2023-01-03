@@ -6,9 +6,9 @@ const logger = require("./logger");
 const fetch = require("node-fetch");
 const mainServicePrivateIp = "ip-10-0-2-5.us-east-2.compute.internal";
 
-if (process.env.IS_LOCALHOST) {
+try {
   require("./secrets");
-} else {
+} catch (err) {
   const awsParamEnv = require("aws-param-env");
   awsParamEnv.load("/hello-world/dev", { region: "us-east-2" });
 }
