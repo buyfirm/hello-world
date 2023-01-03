@@ -13,8 +13,29 @@ try {
   awsParamEnv.load("/hello-world/dev", { region: "us-east-2" });
 }
 
+const createApp = async () => {
+  app.get("/health", (req, res) => {
+    res.send(`${process.env.GOODBYE} from ${process.env.NODE_ENV}`);
+  });
+};
+
+const startListening = async () => {
+  const server = app.listen(port, async () => {
+    logger.log("info", `Hello world from an EC2 instance in a private subnet`, {
+      tags: "starting-service",
+    });
+  });
+};
+
+const bootApp = async () => {
+  await createApp();
+  await startListening();
+};
+
+bootApp();
+
 try {
-  const response = await fetch(`http://${mainServicePrivateIp}/health`);
+  const response = await fetch(`http://${mainServicePrivateIp}:3001/health`);
   const data = await response.json();
   logger.log(
     "info",
@@ -26,13 +47,3 @@ try {
 } catch (err) {
   logger.error(err);
 }
-
-app.get("/health", (req, res) => {
-  res.send(`${process.env.GOODBYE} from ${process.env.NODE_ENV}`);
-});
-
-app.listen(port, async () => {
-  logger.log("info", `Hello world from an EC2 instance in a private subnet`, {
-    tags: "starting-service",
-  });
-});
