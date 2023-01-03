@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const port = 3001;
 const awsParamEnv = require("aws-param-env");
-const logger = require("./logger");
 const fetch = require("node-fetch");
 const mainServicePrivateIp = "ip-10-0-2-5.us-east-2.compute.internal";
 
@@ -12,6 +11,8 @@ try {
   const awsParamEnv = require("aws-param-env");
   awsParamEnv.load("/hello-world/dev", { region: "us-east-2" });
 }
+
+const logger = require("./logger");
 
 const createApp = async () => {
   app.get("/health", (req, res) => {
