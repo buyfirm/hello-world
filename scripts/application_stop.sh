@@ -8,5 +8,5 @@ if [ -d "$DIR" ] && [ -x "$DIR" ]; then
 
   
   # we have to do this because it throws an error if it can't find the process... and then the whole build breaks
-  node -e 'try{require("child_process").execSync("pm2 stop main-service")}catch(e){}';
+  node -e 'try{require("child_process").execSync("pm2 stop hello-world")}catch(e){}';
 fi

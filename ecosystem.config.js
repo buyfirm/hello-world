@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "main-service",
+      name: "hello-world",
       script: "./index.js",
       env: {
         NODE_ENV: "staging",
