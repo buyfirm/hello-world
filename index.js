@@ -35,7 +35,9 @@ const bootApp = async () => {
 bootApp();
 
 try {
-  const response = await fetch(`http://${mainServicePrivateIp}:3001/health`);
+  const response = await fetch(
+    `http://${mainServicePrivateIp}:3001/check-cloudwatch`
+  );
   const data = await response.json();
   logger.log(
     "info",
